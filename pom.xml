@@ -42,6 +42,7 @@
         <junit.version>5.11.0</junit.version>
         <mockito.version>5.20.0</mockito.version>
         <swagger.version>2.2.41</swagger.version>
+        <apache.avro.version>1.11.1</apache.avro.version>
 
         <httpclient5.version>5.4.1</httpclient5.version>
         <plugin.maven.up.avro.version>2.1.13</plugin.maven.up.avro.version>
@@ -79,6 +80,12 @@
                 <groupId>io.swagger.core.v3</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${apache.avro.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -163,7 +170,7 @@
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>${git.commit.version}</version>
+                    <version>${plugin.git.commit.version}</version>
                 </plugin>
 
                 <plugin>
