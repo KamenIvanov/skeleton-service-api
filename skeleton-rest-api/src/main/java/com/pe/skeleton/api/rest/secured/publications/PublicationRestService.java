@@ -15,12 +15,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
-
-import static com.pe.skeleton.api.rest.HeaderConstants.REQUESTER_ID;
 
 /**
  * @author kamen on 2.08.22 г.
@@ -38,21 +34,11 @@ public interface PublicationRestService extends CrudRestService<NewPublicationDt
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class)) }
             )
     })
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     PublicationsDto getPublications(
-            @Parameter(description = "The requested page index. The first page is 1.", required = true, in = ParameterIn.QUERY)
-            @RequestParam("page")
-            int page,
-            @Parameter(description = "An page's size. The minimum is 1 element.", required = true, in = ParameterIn.QUERY)
-            @RequestParam("size")
-            int size,
-            @Parameter(description = "How the publications should be sorted before put in the page.", required = true, in = ParameterIn.QUERY)
-            @RequestParam("sort")
-            PublicationSortOptionDto sort,
-            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER)
-            @RequestHeader(REQUESTER_ID)
-            UUID requesterId
+            @Parameter(description = "The requested page index. The first page is 1.", required = true, in = ParameterIn.QUERY) int page,
+            @Parameter(description = "An page's size. The minimum is 1 element.", required = true, in = ParameterIn.QUERY) int size,
+            @Parameter(description = "How the publications should be sorted before put in the page.", required = true, in = ParameterIn.QUERY) PublicationSortOptionDto sort,
+            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER) UUID requesterId
     );
 
     @Operation(summary = "Patches account's publication.")
@@ -65,6 +51,8 @@ public interface PublicationRestService extends CrudRestService<NewPublicationDt
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class)) }
             )
     })
-    @PatchMapping("/{id}")
-    void patch(@PathVariable("id") UUID id, @RequestBody JsonPatchOperationsDto patch);
+    void patch(
+            @Parameter(description = "The entity identification.", required = true, in = ParameterIn.QUERY) UUID id,
+            @Parameter(description = "The patch operations.", required = true, in = ParameterIn.QUERY) JsonPatchOperationsDto patch
+    );
 }

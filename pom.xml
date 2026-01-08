@@ -17,35 +17,21 @@
 
         <!-- Plugin versions -->
         <plugin.maven.compiler.version>3.13.0</plugin.maven.compiler.version>
-        <plugin.maven.jar.version>3.4.1</plugin.maven.jar.version>
-        <plugin.release.version>3.0.1</plugin.release.version>
         <plugin.maven.enforcer.version>3.3.0</plugin.maven.enforcer.version>
         <plugin.maven.source.version>3.3.1</plugin.maven.source.version>
         <plugin.maven.resources.version>3.3.1</plugin.maven.resources.version>
         <plugin.maven.javadoc.version>3.5.0</plugin.maven.javadoc.version>
         <plugin.maven.site.version>4.0.0-M13</plugin.maven.site.version>
         <plugin.maven.properties.version>1.2.1</plugin.maven.properties.version>
-        <plugin.surefire.version>3.2.5</plugin.surefire.version>
-        <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
         <plugin.build.helper.version>3.5.0</plugin.build.helper.version>
-        <plugin.buildnumber.version>3.2.0</plugin.buildnumber.version>
-        <plugin.shade.version>3.5.3</plugin.shade.version>
         <plugin.deploy.version>3.1.1</plugin.deploy.version>
-        <plugin.gmaven.version>1.5</plugin.gmaven.version>
-        <plugin.docker.version>0.44.0</plugin.docker.version>
         <plugin.git.commit.version>9.0.1</plugin.git.commit.version>
         <plugin.pe.avro.version>1.0.0-SNAPSHOT</plugin.pe.avro.version>
-        <plugin.helm.version>6.14.0</plugin.helm.version>
 
         <!-- -->
-        <spring.boot.version>3.4.2</spring.boot.version>
-        <slf4j.version>2.0.16</slf4j.version>
-        <junit.version>5.11.0</junit.version>
-        <mockito.version>5.20.0</mockito.version>
+        <spring.boot.version>4.0.1</spring.boot.version>
         <swagger.version>2.2.41</swagger.version>
         <apache.avro.version>1.11.1</apache.avro.version>
-
-        <httpclient5.version>5.4.1</httpclient5.version>
     </properties>
 
     <organization>
@@ -175,15 +161,6 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${plugin.surefire.version}</version>
-                    <configuration>
-                        <argLine>${java.args}</argLine>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${plugin.maven.enforcer.version}</version>
                     <executions>
@@ -218,39 +195,8 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${plugin.maven.jar.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${plugin.release.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugin.maven.site.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${plugin.jacoco.version}</version>
-                </plugin>
-
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>${plugin.shade.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.gmaven</groupId>
-                    <artifactId>gmaven-plugin</artifactId>
-                    <version>${plugin.gmaven.version}</version>
                 </plugin>
 
                 <plugin>
@@ -260,32 +206,6 @@
                     <configuration>
                         <deployAtEnd>true</deployAtEnd>
                     </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${plugin.spring.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>io.kokuwa.maven</groupId>
-                    <artifactId>helm-maven-plugin</artifactId>
-                    <version>${plugin.helm.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>wagon-maven-plugin</artifactId>
-                    <version>2.0.2</version>
-                    <dependencies>
-                        <!-- This adds WEBDAV support to Apache Wagon, required to upload to a Nexus RAW repository -->
-                        <dependency>
-                            <groupId>org.apache.maven.wagon</groupId>
-                            <artifactId>wagon-webdav-jackrabbit</artifactId>
-                            <version>2.8</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
 
                 <plugin>
@@ -332,6 +252,16 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <inherited>false</inherited>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

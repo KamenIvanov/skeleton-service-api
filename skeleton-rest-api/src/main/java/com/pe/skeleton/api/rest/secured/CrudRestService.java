@@ -10,11 +10,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
-
-import static com.pe.skeleton.api.rest.HeaderConstants.REQUESTER_ID;
 
 /**
  * @author kamen on 2.08.22 г.
@@ -41,14 +38,9 @@ public interface CrudRestService<NewEntityVo extends AbstractDto, EntityVo exten
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))}
             )
     })
-    @PostMapping
     EntityVo create(
-            @Parameter(description = "Entity's data.", required = true, in = ParameterIn.HEADER)
-            @RequestBody
-            NewEntityVo entityVo,
-            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER)
-            @RequestHeader(REQUESTER_ID)
-            UUID requesterId
+            @Parameter(description = "Entity's data.", required = true, in = ParameterIn.HEADER) NewEntityVo entityVo,
+            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER) UUID requesterId
     );
 
     /**
@@ -71,14 +63,9 @@ public interface CrudRestService<NewEntityVo extends AbstractDto, EntityVo exten
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))}
             )
     })
-    @PutMapping
     EntityVo update(
-            @Parameter(description = "Entity's data.", required = true, in = ParameterIn.HEADER)
-            @RequestBody
-            EntityVo entityVo,
-            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER)
-            @RequestHeader(REQUESTER_ID)
-            UUID requesterId
+            @Parameter(description = "Entity's data.", required = true, in = ParameterIn.HEADER) EntityVo entityVo,
+            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER) UUID requesterId
     );
 
     /**
@@ -101,13 +88,9 @@ public interface CrudRestService<NewEntityVo extends AbstractDto, EntityVo exten
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))}
             )
     })
-    @GetMapping("/{id}")
     EntityVo loadById(
-            @Parameter(description = "The requested entity's identification.", required = true, in = ParameterIn.HEADER)
-            @PathVariable("id") UUID id,
-            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER)
-            @RequestHeader(REQUESTER_ID)
-            UUID requesterId
+            @Parameter(description = "The requested entity's identification.", required = true, in = ParameterIn.HEADER) UUID id,
+            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER) UUID requesterId
     );
 
     /**
@@ -129,13 +112,8 @@ public interface CrudRestService<NewEntityVo extends AbstractDto, EntityVo exten
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))}
             )
     })
-    @DeleteMapping("/{id}")
     void delete(
-            @Parameter(description = "The entity's identification being deleted.", required = true, in = ParameterIn.HEADER)
-            @PathVariable("id")
-            UUID id,
-            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER)
-            @RequestHeader(REQUESTER_ID)
-            UUID requesterId
+            @Parameter(description = "The entity's identification being deleted.", required = true, in = ParameterIn.HEADER) UUID id,
+            @Parameter(description = "An account's identification.", required = true, in = ParameterIn.HEADER) UUID requesterId
     );
 }

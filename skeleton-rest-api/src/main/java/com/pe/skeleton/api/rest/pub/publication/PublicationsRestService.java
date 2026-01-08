@@ -4,7 +4,6 @@ import com.pe.skeleton.api.dto.ResponseDto;
 import com.pe.skeleton.api.dto.publication.PublicationDto;
 import com.pe.skeleton.api.dto.publication.PublicationSortOptionDto;
 import com.pe.skeleton.api.dto.publication.PublicationsDto;
-import com.pe.skeleton.api.rest.RestUrl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -13,9 +12,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,12 +20,6 @@ import java.util.UUID;
  * @author kamen on 2.08.22 г.
  */
 @Tag(name = "Publications Filtering", description = "Used to filter publications by anonymous accounts.")
-@RestController
-@RequestMapping(
-        value = RestUrl.SECURED_PUBLICATIONS,
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        headers = "Accept=application/json"
-)
 public interface PublicationsRestService {
 
     @Operation(summary = "Loads publications in pages with the given sort applied.")
