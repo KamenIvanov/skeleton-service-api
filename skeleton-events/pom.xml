@@ -57,6 +57,49 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>com.pe.plugin</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <configuration>
+                    <outputDir>${project.build.outputDirectory}/com/pe/skeleton/events/</outputDir>
+                    <schemaFileName>schema.avsc</schemaFileName>
+                    <className>com.pe.skeleton.events.AllEventsRegistry</className>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Generate Avro schema -->
+                        <id>generate-avro-schema</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.outputDirectory}/com/pe/skeleton/events/schema.avsc</file>
+                                    <type>avsc</type>
+                                    <classifier>schema</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

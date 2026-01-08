@@ -34,6 +34,7 @@
         <plugin.gmaven.version>1.5</plugin.gmaven.version>
         <plugin.docker.version>0.44.0</plugin.docker.version>
         <plugin.git.commit.version>9.0.1</plugin.git.commit.version>
+        <plugin.pe.avro.version>1.0.0-SNAPSHOT</plugin.pe.avro.version>
         <plugin.helm.version>6.14.0</plugin.helm.version>
 
         <!-- -->
@@ -45,7 +46,6 @@
         <apache.avro.version>1.11.1</apache.avro.version>
 
         <httpclient5.version>5.4.1</httpclient5.version>
-        <plugin.maven.up.avro.version>2.1.13</plugin.maven.up.avro.version>
     </properties>
 
     <organization>
@@ -286,6 +286,12 @@
                             <version>2.8</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.pe.plugin</groupId>
+                    <artifactId>avro-maven-plugin</artifactId>
+                    <version>${plugin.pe.avro.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
